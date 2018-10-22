@@ -67,6 +67,17 @@ Desired features: ease of use
 
 ---
 
+Query Playground
+===
+
+https://swapi.co/ &rarr; https://graphql.org/swapi-graphql/
+
+| Query:                                                 | Result                                                  |
+| ------------------------------------------------------ | ------------------------------------------------------- |
+| <img src="./images/example-query.png" width="400px" /> | <img src="./images/example-result.png" width="500px" /> |
+
+---
+
 Schema: Scalar types
 ===
 
@@ -128,12 +139,18 @@ schema {
 
 ---
 
-Ideas:
+The n+1 problem
+===
 
-* The n+1 problem
-  * Dataloader what?
-* Caching and ways to get it done
-  * When is caching desired?
+* Dataloader what?
+
+---
+
+Caching
+===
+
+* When do we want to cache?
+* How can it be done?
 
 ---
 
