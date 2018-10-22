@@ -14,9 +14,9 @@ Overview
 
 * Opening slide, overview and history
 * Desired features
-* The GraphQL Schema
 * Query by example
-* The `n + 1` problem
+* The GraphQL Schema
+* Query complexity
 * Caching
 * Code and interaction and things
 
@@ -72,9 +72,9 @@ Query Playground
 
 https://swapi.co/ &rarr; https://graphql.org/swapi-graphql/
 
-| Query:                                                 | Result                                                  |
-| ------------------------------------------------------ | ------------------------------------------------------- |
-| <img src="./images/example-query.png" width="400px" /> | <img src="./images/example-result.png" width="500px" /> |
+| Query:                                   | Result                                    |
+| ---------------------------------------- | ----------------------------------------- |
+| <img src="./images/example-query.png" /> | <img src="./images/example-result.png" /> |
 
 ---
 
@@ -139,18 +139,23 @@ schema {
 
 ---
 
-The n+1 problem
+Query complexity
 ===
 
-* Dataloader what?
+Consider this setup:
+
+| Type                                       | Query                                       |
+| ------------------------------------------ | ------------------------------------------- |
+| <img src="./images/complexity-type.png" /> | <img src="./images/complexity-query.png" /> |
 
 ---
 
 Caching
 ===
 
-* When do we want to cache?
-* How can it be done?
+* What data is best to cache?
+* Where can caching be done?
+* Use of case specific connections depending on caching case
 
 ---
 
