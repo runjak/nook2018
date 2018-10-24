@@ -1,0 +1,17 @@
+{
+  "name": "nook2018-slides",
+  "version": "1.0.0",
+  "description": "Slides for nook2018",
+  "main": "index.js",
+  "repository": "https://github.com/runjak/nook2018",
+  "author": "Jakob Runge",
+  "license": "CC BY-SA 4.0",
+  "private": true,
+  "dependencies": {
+    "reveal-md": "^2.3.0"
+  },
+  "scripts": {
+    "start": "./node_modules/.bin/reveal-md ./introToGraphQL.md",
+    "build": "./node_modules/.bin/reveal-md ./introToGraphQL.md --static slides"
+  }
+}
