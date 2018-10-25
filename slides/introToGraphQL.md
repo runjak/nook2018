@@ -6,8 +6,7 @@ revealOptions:
     transition: 'slide'
 ---
 
-Intro to GraphQL
-===
+# Intro to GraphQL
 
 <img src="./images/gql-logo.svg" style="width: 400px; border: none;" />
 
@@ -15,8 +14,7 @@ Intro to GraphQL
 
 ---
 
-Overview
-===
+## Overview
 
 * Opening slide, overview and history
 * Desired features
@@ -28,8 +26,7 @@ Overview
 
 ---
 
-A short history of GraphQL
-===
+## A short history of GraphQL
 
 * Facebook started development on GraphQL in 2012.
 * GraphQL was released publicly in [2015](https://code.fb.com/core-data/graphql-a-data-query-language/).
@@ -37,8 +34,7 @@ A short history of GraphQL
 
 ---
 
-Desired features: communication
-===
+## Desired features: communication
 
 * We desire low communication overhead
   * fewer requests
@@ -50,8 +46,7 @@ Desired features: communication
 
 -v-
 
-Desired features: integrity
-===
+## Desired features: integrity
 
 * We desire correctness of data in transit
   * correctness of handling at server- and client-side
@@ -61,8 +56,7 @@ Desired features: integrity
 
 -v-
 
-Desired features: ease of use
-===
+## Desired features: ease of use
 
 * We desire the API to be easy to use
   * abillity to discover
@@ -73,35 +67,29 @@ Desired features: ease of use
 
 ---
 
-Query Playground
-===
+## Query Playground
 
 <img src="./images/queryComposition.png" style="border: none" />
 
 -v-
 
-Query Playground
-===
+## Query Playground
 
 Let's visit:
 https://graphql.org/swapi-graphql/
 
 ---
 
-Schema: Scalar types
-===
+## Schema: Scalar types
 
-| Type    | Description                                  |
-| ------- | -------------------------------------------- |
-| Int     | Signed 32-bit integer                        |
-| Float   | Signed double-precision floating point value |
-| Boolean | true or false                                |
-| ID      | Unique identifiers, serialized like a string |
+* `Int`: Signed 32-bit integer
+* `Float`: Signed double-precision floating point
+* `Boolean`: true or false
+* `ID`: Unique identifiers, serialized like a string
 
 -v-
 
-Schema: Enums
-===
+## Schema: Enums
 
 ```graphql
 enum Protocol {
@@ -113,12 +101,9 @@ enum Protocol {
 
 -v-
 
-Schema: Nested structures
-===
+## Schema: Nested structures
 
-* Objects and Inputs
-* Lists
-* Non-Null
+`Objects, Inputs, Lists, Non-Null`
 
 ```graphql
 type Foo {
@@ -133,8 +118,7 @@ input Bar {
 
 -v-
 
-Schema: Definition
-===
+## Schema: Definition
 
 ```graphql
 schema {
@@ -149,19 +133,15 @@ schema {
 
 ---
 
-Query complexity
-===
+## Query complexity
 
 Consider this setup:
 
-| Type                                       | Query                                       |
-| ------------------------------------------ | ------------------------------------------- |
-| <img src="./images/complexity-type.png" /> | <img src="./images/complexity-query.png" /> |
+<img src="./images/complexityComposition.png" style="border: none; width: 700px;" />
 
 ---
 
-Caching
-===
+## Caching
 
 * What data is best to cache?
 * Where can caching be done?
@@ -169,11 +149,10 @@ Caching
 
 ---
 
-Before the code
-===
+## Before the code
 
 * Anyone without a Computer but desires to code?
   * Maybe team up?
 * If you haven't already clone https://github.com/runjak/nook2018
   * Run `npm install` or `yarn install`
-* We will get to this again in a bit ;)
+* Let's figure this stuff out!
