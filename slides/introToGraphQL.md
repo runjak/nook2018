@@ -1,9 +1,15 @@
-<!-- $theme: gaia -->
+---
+title: Intro to GraphQL - MetaNook 2018
+separator: ---
+verticalSeparator: -v-
+revealOptions:
+    transition: 'slide'
+---
 
 Intro to GraphQL
 ===
 
-<img src="./images/gql-logo.svg" style="width: 450px" />
+<img src="./images/gql-logo.svg" style="width: 400px; border: none;" />
 
 [@sicarius](https://twitter.com/sicarius)
 
@@ -42,7 +48,7 @@ Desired features: communication
   * batching several requests together
   * moving query complexity to the server
 
----
+-v-
 
 Desired features: integrity
 ===
@@ -53,7 +59,7 @@ Desired features: integrity
   * Having the server publish a schema that the client can discover
   * validating all data transferred in either direction against a schema
 
----
+-v-
 
 Desired features: ease of use
 ===
@@ -70,11 +76,15 @@ Desired features: ease of use
 Query Playground
 ===
 
-https://swapi.co/ &rarr; https://graphql.org/swapi-graphql/
+<img src="./images/queryComposition.png" style="border: none" />
 
-| Query:                                   | Result                                    |
-| ---------------------------------------- | ----------------------------------------- |
-| <img src="./images/example-query.png" /> | <img src="./images/example-result.png" /> |
+-v-
+
+Query Playground
+===
+
+Let's visit:
+https://graphql.org/swapi-graphql/
 
 ---
 
@@ -88,7 +98,7 @@ Schema: Scalar types
 | Boolean | true or false                                |
 | ID      | Unique identifiers, serialized like a string |
 
----
+-v-
 
 Schema: Enums
 ===
@@ -101,7 +111,7 @@ enum Protocol {
 }
 ```
 
----
+-v-
 
 Schema: Nested structures
 ===
@@ -121,7 +131,7 @@ input Bar {
 }
 ```
 
----
+-v-
 
 Schema: Definition
 ===
