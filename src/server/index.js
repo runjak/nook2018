@@ -1,72 +1,38 @@
 const express = require('express');
-const { PubSub } = require('apollo-server');
-const { ApolloServer, gql } = require('apollo-server-express');
+const { execute, subscribe } = require('graphql');
+const { ApolloServer } = require('apollo-server-express');
+const { SubscriptionServer } = require('subscriptions-transport-ws');
+const { createServer } = require('http');
 
-const pubSub = new PubSub();
+const { typeDefs, resolvers, schema } = require('./schema');
 
-const typeDefs = gql`
-  type Subscription {
-    postAdded: Post
-  }
-
-  type Query {
-    posts: [Post!]!
-  }
-
-  type Mutation {
-    addPost(author: String!, comment: String!): Post
-  }
-
-  type Post {
-    author: String!
-    comment: String!
-  }
-`;
-
-const POST_ADDED = 'POST_ADDED';
-
-const posts = [];
-
-const resolvers = {
-  Subscription: {
-    postAdded: {
-      subscribe: () => pubSub.asyncIterator([POST_ADDED]),
-    }
-  },
-  Query: {
-    posts: (root, args, context) => (posts),
-  },
-  Mutation: {
-    addPost: (root, args, context) => {
-      console.log('Mutation.addPost:', JSON.stringify(args));
-
-      const { author, comment } = args;
-
-      if (!author || !comment) {
-        return null;
-      }
-
-      const post = { author, comment };
-
-      posts.push(post);
-      pubSub.publish(POST_ADDED, post);
-
-      return post;
-    },
-  },
-};
+const HTTP_PORT = 8000;
+const WS_PORT = 5000;
 
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  subscriptions: `ws://localhost:${WS_PORT}/subscriptions`,
 });
-const port = 27374;
 
 const app = express();
 server.applyMiddleware({ app });
 
-app.listen({ port }, () => {
-  console.log(`Server ready at 'http://localhost:${port}/${server.graphqlPath}'.`);
+app.listen({ port: HTTP_PORT }, () => {
+  console.log(`Server ready at 'http://localhost:${HTTP_PORT}${server.graphqlPath}'.`);
+  console.log(`Subscriptions expected at ${server.subscriptionsPath}.`)
+});
+
+const ws = createServer(app);
+ws.listen(WS_PORT, () => {
+  new SubscriptionServer({
+    execute,
+    subscribe,
+    schema,
+  }, {
+    server: ws,
+    path: '/subscriptions'
+  });
 });
 
 /*
