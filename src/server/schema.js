@@ -48,7 +48,7 @@ const resolvers = {
       const post = { author, comment };
 
       posts.push(post);
-      pubSub.publish(POST_ADDED, post);
+      pubSub.publish(POST_ADDED, { postAdded: post });
 
       return post;
     },

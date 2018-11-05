@@ -45,4 +45,5 @@ ws.listen(WS_PORT, () => {
   2.1. Add a parameter to the query
   3.   Add a query to fetch distinct authors
   4.   Add a mutation to remove a post or rename an author
+  5.   Use your wild and untamed imagination ;)
 */
