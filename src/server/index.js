@@ -1,57 +1,82 @@
 const express = require('express');
-const graphqlHttp = require('express-graphql');
-const { buildSchema } = require('graphql');
+const { PubSub } = require('apollo-server');
+const { ApolloServer, gql } = require('apollo-server-express');
 
-const mkStatus = (open) => ({
-  open,
-  messages: [],
-  date: new Date().toISOString(),
-});
+const pubSub = new PubSub();
 
-let statuus = [
-  mkStatus(false),
-];
-
-const schema = buildSchema(`
-  type Status {
-    open: Boolean
-    messages: [String]!
-    date: String!
+const typeDefs = gql`
+  type Subscription {
+    postAdded: Post
   }
 
   type Query {
-    statuus: [Status]!
+    posts: [Post!]!
   }
 
   type Mutation {
-    leaveMessage(message: String!): [Status]!
-    setOpen(open: Boolean!): [Status]!
+    addPost(author: String!, comment: String!): Post
   }
-`);
 
-const root = {
-  statuus() {
-    return statuus;
-  },
-  leaveMessage({ message }) {
-    const [ status ] = statuus;
-    status.messages.push(message);
-
-    return statuus;
-  },
-  setOpen({ open }) {
-    statuus = [mkStatus(open), ...statuus];
-
-    return statuus;
+  type Post {
+    author: String!
+    comment: String!
   }
+`;
+
+const POST_ADDED = 'POST_ADDED';
+
+const posts = [];
+
+const resolvers = {
+  Subscription: {
+    postAdded: {
+      subscribe: () => pubSub.asyncIterator([POST_ADDED]),
+    }
+  },
+  Query: {
+    posts: (root, args, context) => (posts),
+  },
+  Mutation: {
+    addPost: (root, args, context) => {
+      console.log('Mutation.addPost:', JSON.stringify(args));
+
+      const { author, comment } = args;
+
+      if (!author || !comment) {
+        return null;
+      }
+
+      const post = { author, comment };
+
+      posts.push(post);
+      pubSub.publish(POST_ADDED, post);
+
+      return post;
+    },
+  },
 };
 
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+});
+const port = 27374;
+
 const app = express();
+server.applyMiddleware({ app });
 
-app.use('/', graphqlHttp({
-  schema,
-  rootValue: root,
-  graphiql: true,
-}));
+app.listen({ port }, () => {
+  console.log(`Server ready at 'http://localhost:${port}/${server.graphqlPath}'.`);
+});
 
-app.listen(27374);
+/*
+  Opportunities to play:
+  1.   Explore with a browser
+  1.1. Send a query
+  1.2. Send a mutation
+  1.3. Query again!
+  2.   Add a helloWorld query
+  2.1. Add a parameter to the query
+  3.   Add a query to fetch distinct authors
+  4.   Add a mutation to remove a post or rename an author
+*/
