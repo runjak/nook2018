@@ -35,13 +35,9 @@ function PostList() {
         return (
           <dl>
             {posts.map(({ author, comment }, index) => (
-              <Fragment>
-                <dt key={`postlist-dt-${index}`}>
-                  {author}:
-                </dt>
-                <dd key={`postlist-dd-${index}`}>
-                  {comment}
-                </dd>
+              <Fragment key={`postlist-fragment-${index}`}>
+                <dt>{author}:</dt>
+                <dd>{comment}</dd>
               </Fragment>
             ))}
           </dl>
