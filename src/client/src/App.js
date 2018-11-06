@@ -1,26 +1,13 @@
 import React from 'react';
-import ApolloClient from 'apollo-client';
 import { ApolloProvider } from 'react-apollo';
-import { InMemoryCache } from 'apollo-cache-inmemory';
 
-import './App.css';
-import gqlLink from './gqlLink';
-
-const client = new ApolloClient({
-  link: gqlLink,
-  cache: new InMemoryCache(),
-});
+import client from './gqlClient';
+import PostList from './PostList';
 
 function App() {
   return (
     <ApolloProvider client={client}>
-      <div className="App">
-        <header className="App-header">
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-        </header>
-      </div>
+      <PostList />
     </ApolloProvider>
   );
 }
