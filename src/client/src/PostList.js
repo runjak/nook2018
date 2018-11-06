@@ -13,37 +13,40 @@ const query = gql`
 
 function PostList() {
   return (
-    <Query query={query}>
-      {({ loading, error, data }) => {
-        if (loading) {
+    <Fragment>
+      <h3>Existing posts:</h3>
+      <Query query={query}>
+        {({ loading, error, data }) => {
+          if (loading) {
+            return (
+              <div>Loading PostList…</div>
+            );
+          }
+
+          if (error) {
+            return (
+              <div>
+                Could not load PostList.
+                Error: {JSON.stringify(error)}
+              </div>
+            );
+          }
+
+          const { posts } = data;
+
           return (
-            <div>Loading PostList…</div>
+            <dl>
+              {posts.map(({ author, comment }, index) => (
+                <Fragment key={`postlist-fragment-${index}`}>
+                  <dt>{author}:</dt>
+                  <dd>{comment}</dd>
+                </Fragment>
+              ))}
+            </dl>
           );
-        }
-
-        if (error) {
-          return (
-            <div>
-              Could not load PostList.
-              Error: {JSON.stringify(error)}
-            </div>
-          );
-        }
-
-        const { posts } = data;
-
-        return (
-          <dl>
-            {posts.map(({ author, comment }, index) => (
-              <Fragment key={`postlist-fragment-${index}`}>
-                <dt>{author}:</dt>
-                <dd>{comment}</dd>
-              </Fragment>
-            ))}
-          </dl>
-        );
-      }}
-    </Query>
+        }}
+      </Query>
+    </Fragment>
   );
 }
 
