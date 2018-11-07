@@ -2,6 +2,12 @@ const { gql } = require('apollo-server-express');
 const { PubSub } = require('apollo-server');
 const { makeExecutableSchema } = require('graphql-tools');
 
+const {
+  types: potatoeTypes,
+  potatoesAndMolasses,
+  resolvers: potatoesAndMolassesResolvers,
+} = require('./potatoesAndMolasses');
+
 const typeDefs = gql`
   type Subscription {
     postAdded: Post
@@ -9,6 +15,7 @@ const typeDefs = gql`
 
   type Query {
     posts: [Post!]!
+    potatoesAndMolasses(count: Int!): [PotatoeOrMolasses!]!
   }
 
   type Mutation {
@@ -19,6 +26,8 @@ const typeDefs = gql`
     author: String!
     comment: String!
   }
+
+  ${potatoeTypes}
 `;
 module.exports.typeDefs = typeDefs;
 
@@ -34,6 +43,7 @@ const resolvers = {
   },
   Query: {
     posts: (root, args, context) => (posts),
+    potatoesAndMolasses: (root, args, context) => (potatoesAndMolasses(args.count)),
   },
   Mutation: {
     addPost: (root, args, context) => {
@@ -53,6 +63,7 @@ const resolvers = {
       return post;
     },
   },
+  ...potatoesAndMolassesResolvers,
 };
 module.exports.resolvers = resolvers;
 
