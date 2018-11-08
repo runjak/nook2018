@@ -157,3 +157,17 @@ Consider this setup:
 * If you haven't already clone https://github.com/runjak/nook2018
   * Run `npm install` or `yarn install`
 * Let's figure this stuff out!
+
+---
+
+## Toying with the code
+
+* We should see some stuff now!
+
+---
+
+## After the code
+
+* Thanks for having me
+* I hope you had fun
+* Explore all the API features
