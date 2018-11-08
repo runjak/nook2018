@@ -5,6 +5,7 @@ The [nook2018](https://metanook.de/2018) will happen on 2018-11-09.
 A german version of the cfp can be found [here](https://metanook.de/2018/cfp).
 
 There are three places where you can run `yarn install` or `npm install`:
+
 1. `src/server/`
 2. `src/client/`
 3. `slides/`

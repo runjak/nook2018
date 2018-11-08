@@ -22,8 +22,13 @@ const typeDefs = gql`
     addPost(author: String!, comment: String!): Post
   }
 
+  """
+  Posts are a combination of author and comment.
+  """
   type Post {
+    """author of a Post"""
     author: String!
+    """comment of a Post"""
     comment: String!
   }
 
