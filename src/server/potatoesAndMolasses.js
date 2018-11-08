@@ -54,11 +54,11 @@ module.exports.potatoesAndMolasses = potatoesAndMolasses;
 module.exports.resolvers = {
   PotatoeOrMolasses: {
     __resolveType(obj, context, info) {
-      if (obj.__typename) {
-        return obj.__typename;
+      if ('sweetness' in obj) {
+        return 'Molasses';
       }
 
-      return null;
+      return 'Potatoe';
     }
   },
 };
