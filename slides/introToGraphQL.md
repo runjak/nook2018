@@ -31,6 +31,7 @@ revealOptions:
 * Facebook started development on GraphQL in 2012.
 * GraphQL was released publicly in [2015](https://code.fb.com/core-data/graphql-a-data-query-language/).
 * GraphQL is now developed by a community, see [graphql.org](https://graphql.org/).
+* 2018-11-07: [GraphQL Foundation](https://sdtimes.com/api/the-linux-foundation-announces-plans-to-form-graphql-foundation/)
 
 ---
 
