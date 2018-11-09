@@ -35,6 +35,10 @@ revealOptions:
 
 ---
 
+# Desired features
+
+-v-
+
 ## Desired features: communication
 
 * We desire low communication overhead
@@ -47,7 +51,7 @@ revealOptions:
 
 -v-
 
-## Desired features: integrity
+## Integrity
 
 * We desire correctness of data in transit
   * correctness of handling at server- and client-side
@@ -57,7 +61,7 @@ revealOptions:
 
 -v-
 
-## Desired features: ease of use
+## Ease of use
 
 * We desire the API to be easy to use
   * abillity to discover
@@ -81,7 +85,11 @@ https://graphql.org/swapi-graphql/
 
 ---
 
-## Schema: Scalar types
+# The schema
+
+-v-
+
+## Scalar types
 
 * `Int`: Signed 32-bit integer
 * `Float`: Signed double-precision floating point
@@ -90,7 +98,7 @@ https://graphql.org/swapi-graphql/
 
 -v-
 
-## Schema: Enums
+## Enums
 
 ```graphql
 enum Protocol {
@@ -102,7 +110,7 @@ enum Protocol {
 
 -v-
 
-## Schema: Nested structures
+## Nested structures
 
 `Objects, Inputs, Lists, Non-Null`
 
@@ -119,7 +127,7 @@ input Bar {
 
 -v-
 
-## Schema: Definition
+## Definition
 
 ```graphql
 schema {
@@ -165,6 +173,13 @@ Consider this setup:
 * We should see some stuff now!
 
 ---
+
+## After the code
+
+* Is there time for annecdotes?
+* Questions? Ask away if you havn't!
+
+-v-
 
 ## After the code
 
