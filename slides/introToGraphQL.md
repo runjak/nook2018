@@ -56,7 +56,7 @@ revealOptions:
 * We desire correctness of data in transit
   * correctness of handling at server- and client-side
 * We achieve this by:
-  * Having the server publish a schema that the client can discover
+  * having the server publish a schema that the client can discover
   * validating all data transferred in either direction against a schema
 
 -v-
@@ -67,7 +67,7 @@ revealOptions:
   * abillity to discover
   * simple to write queries
 * We achieve this by:
-  * Using the schema to provide documentation and auto-completion for the API
+  * using the schema to provide documentation and auto-completion for the API
   * something similar to query by example (IBM Research 197*)
 
 ---
@@ -160,7 +160,7 @@ Consider this setup:
 
 ## Before the code
 
-* Anyone without a Computer but desires to code?
+* Anyone without a laptop but desire to code?
   * Maybe team up?
 * If you haven't already clone https://github.com/runjak/nook2018
   * Run `npm install` or `yarn install`
@@ -177,7 +177,7 @@ Consider this setup:
 ## After the code
 
 * Is there time for annecdotes?
-* Questions? Ask away if you havn't!
+* Questions? Ask away if you haven't!
 
 -v-
 
