@@ -10,7 +10,7 @@ revealOptions:
 
 <img src="./images/gql-logo.svg" style="width: 400px; border: none;" />
 
-[@sicarius](https://twitter.com/sicarius)
+[@sicarius](https://twitter.com/sicarius) 🚀 https://github.com/runjak/nook2018 🎉
 
 ---
 
